@@ -1,0 +1,22 @@
+/**
+ * Node.js 环境 TypeScript 配置
+ * 用于构建工具（如 Vite）和配置文件
+ */
+{
+  "compilerOptions": {
+    // 启用复合项目，允许引用其他项目
+    "composite": true,
+    // 跳过库文件检查，加速编译
+    "skipLibCheck": true,
+    // 模块系统使用 ESNext
+    "module": "ESNext",
+    // 模块解析使用 bundler 模式
+    "moduleResolution": "bundler",
+    // 允许默认导入合成模块
+    "allowSyntheticDefaultImports": true,
+    // 启用严格类型检查
+    "strict": true
+  },
+  // 包含的文件
+  "include": ["vite.config.ts", "manifest.config.ts"]
+}

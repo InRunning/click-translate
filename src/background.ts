@@ -1,0 +1,108 @@
+/**
+ * 后台脚本模块 (Background Script)
+ *
+ * 功能说明：
+ * - 处理扩展的后台任务和事件监听
+ * - 管理右键菜单和上下文菜单
+ * - 处理扩展与其他部分之间的消息传递
+ * - 提供身份验证和网络请求代理功能
+ */
+
+// 导入浏览器扩展API的TypeScript类型定义
+import Browser from "webextension-polyfill";
+// 导入消息传递的类型定义
+import type { ExtensionMessage, BackgroundFetchParam, ExternalMessage } from "./types";
+// 导入设置存储操作函数
+import { getSetting } from "./storage/sync";
+
+// 注释掉的截图功能代码（可能用于未来功能扩展）
+// const  screenshot = async () => {
+//   const res = await Browser.tabs.captureVisibleTab();
+//   const tabs = await Browser.tabs.query({
+//     active: true,
+//     currentWindow: true
+//   })
+//   const message: ExtensionMessage = {
+//     type: 'onScreenDataurl',
+//     payload: res
+//   }
+//   Browser.tabs.sendMessage(tabs[0].id!, message);
+// }
+
+const backgroundFetch = async (param: BackgroundFetchParam) => {
+  const { url, method, responseType } = param;
+  const options: Record<string, unknown> = {
+    method: method ?? "GET",
+  };
+  if (param.body) {
+    options.body = param.body;
+  }
+  if (param.headers) {
+    options.headers = param.headers;
+  }
+  return fetch(url, options).then(async (res) => {
+    //console.log(res);
+    if (!res.ok) {
+      return {
+        error: "fetch failed",
+      };
+    }
+    if (responseType === "dataURL") {
+      const blob = await res.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = function () {
+          resolve(this.result);
+        };
+        reader.readAsDataURL(blob);
+      });
+    } else if (responseType === "text") {
+      return await res.text();
+    } else if (responseType === "json") {
+      return await res.json();
+    }
+  });
+};
+Browser.runtime.onInstalled.addListener(() => {
+  Browser.contextMenus.create({
+    id: "translate",
+    title: "translate",
+    contexts: ["selection"],
+    documentUrlPatterns: [
+      "http://*/*",
+      "https://*/*",
+      "file://*/*",
+      "ftp://*/*",
+    ],
+  });
+});
+Browser.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "translate") {
+    if (!tab?.id) {
+      return;
+    }
+    const message:ExtensionMessage = {
+      type: 'showCardAndPosition'
+    }
+    Browser.tabs.sendMessage(tab?.id, message);
+  }
+});
+Browser.runtime.onMessage.addListener(async (message: ExtensionMessage) => {  
+  if (message.type === "fetch") {
+    const res = await backgroundFetch(message.payload);
+    return res;
+  }
+  if (message.type === "openOptions") {
+    return await Browser.runtime.openOptionsPage();
+  }
+  // 已移除登录鉴权相关逻辑
+  if (message.type === 'captureScreen') {
+    return await Browser.tabs.captureVisibleTab()
+  }
+});
+Browser.runtime.onMessageExternal.addListener(async (message:ExternalMessage) => {
+  if (message.type === 'getUser') {
+    const setting =  await getSetting();
+    return setting.userInfo
+  }
+})

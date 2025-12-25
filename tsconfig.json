@@ -1,0 +1,44 @@
+/**
+ * TypeScript 编译器配置文件
+ * 定义了项目的编译选项和包含的文件范围
+ */
+{
+  "compilerOptions": {
+    // 目标 ECMAScript 版本，编译后的 JavaScript 代码符合 ES2020 规范
+    "target": "ES2020",
+    // 启用类字段的 TypeScript 标准行为
+    "useDefineForClassFields": true,
+    // 包含的库文件，提供 DOM 和 DOM.Iterable 的类型定义
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // 模块系统，使用最新的 ECMAScript 模块系统
+    "module": "ESNext",
+    // 跳过库文件的类型检查，提升编译速度
+    "skipLibCheck": true,
+    // 路径映射配置，@/* 映射到 ./src/*
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    // Bundler 模式，用于与 Vite 等现代构建工具配合
+    "moduleResolution": "bundler",
+    // 允许导入 TypeScript 扩展名的文件
+    "allowImportingTsExtensions": true,
+    // 允许解析 JSON 模块
+    "resolveJsonModule": true,
+    // 编译为孤立模块，每个文件都是独立的
+    "isolatedModules": true,
+    // 不生成输出文件，仅用于类型检查
+    "noEmit": true,
+    // JSX 处理方式，使用 React JSX 转换
+    "jsx": "react-jsx",
+
+    // 严格检查选项，提高代码质量
+    "strict": true,                           // 启用所有严格检查
+    "noUnusedLocals": true,                   // 检查未使用的局部变量
+    "noUnusedParameters": true,               // 检查未使用的函数参数
+    "noFallthroughCasesInSwitch": true        // 检查 switch 语句的贯穿情况
+  },
+  // 包含的文件范围，src 目录下的所有 TypeScript 和 JavaScript 文件
+  "include": ["src/**/*"],
+  // 项目引用，引用 tsconfig.node.json 配置
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

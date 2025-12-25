@@ -1,0 +1,23 @@
+{
+    "src/components/TriggerIcon.tsx": {
+        "description": "点击弹出的icon"
+    },
+    "src/store.ts": {
+        "description": "状态管理"
+    },
+    "src/storage/local.ts": {
+        "description": "浏览器本地数据管理"
+    },
+    "src/components/CardDragableWrapper.tsx": {
+        "description": "拖拽包装器组件"
+    },
+    "src/contentScript/lingoCard.tsx": {
+        "description": "卡片"
+    },
+    "src/hooks/useTreeWalker.tsx": {
+        "description": "标注单词"
+    },
+    "manifest.config.ts": {
+        "description": "插件配置文件"
+    }
+}

@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="512" height="512" rx="128" fill="#212121"/>
+  
+  <!-- 文本行示意 -->
+  <rect x="100" y="150" width="312" height="40" rx="20" fill="#555555"/>
+  <rect x="100" y="322" width="200" height="40" rx="20" fill="#555555"/>
+  
+  <!-- 被选中的高亮区域 -->
+  <rect x="100" y="230" width="220" height="50" rx="8" fill="#00E676"/>
+  
+  <!-- 搜索/翻译放大镜光标 -->
+  <g transform="translate(40, 40)">
+    <circle cx="300" cy="280" r="90" stroke="white" stroke-width="35" fill="none"/>
+    <path d="M360 340L420 400" stroke="white" stroke-width="35" stroke-linecap="round"/>
+    <!-- 放大镜里面的互译箭头 -->
+    <path d="M270 260L330 260M330 260L310 240M330 260L310 280" stroke="#00E676" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M330 300L270 300M270 300L290 280M270 300L290 320" stroke="#00E676" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
