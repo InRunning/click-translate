@@ -117,7 +117,7 @@ export const defaultSetting = {
     : "",
 
   // 翻译引擎配置
-  engine: "google",
+  engine: "openai",
 
   // 语言配置
   targetLanguage: formatZhCode(navigator.language), // 目标翻译语言，基于浏览器语言设置
@@ -227,13 +227,6 @@ UK Phonetic: [UK Phonetic]`,
    */
   engineList: (() => {
     const base = [
-      {
-        name: "Google",
-        value: "google",
-        isChat: false,
-        checked: true,
-        compatible: "sentence",
-      },
       {
         name: "OpenAI",
         value: "openai",
