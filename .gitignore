@@ -31,3 +31,4 @@ backend/local.yaml
 backend/lingo.db
 backend/*.db
 .git-old/
+backend/local.yaml
