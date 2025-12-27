@@ -61,8 +61,6 @@ export default async function ({
 }) {  
   const text = formateText(originText);
   const setting = await getSetting();
-  const sourceLang =
-    setting.sourceLanguage?.language ?? defaultSetting.sourceLanguage.language;
   const targetLang = setting.targetLanguage ?? defaultSetting.targetLanguage;
   beforeRequest();
 

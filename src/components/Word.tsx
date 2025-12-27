@@ -1,10 +1,8 @@
 import YoudaoSpeaker from "./Speaker";
-import Highlight from "./Highlight";
 import { useTranslation } from "react-i18next";
 import { defaultSetting, getWordSystemPrompt, getWordUserContent } from "@/utils/const";
 import CardFooter from "./CardFooter";
 import { EngineValue } from "@/types";
-import ContentMore from "./ContentMore";
 import { useAtom } from "jotai";
 import { settingAtom } from "@/store";
 import WordChat from "./WordChat";
@@ -58,8 +56,6 @@ export default function RenderWord({
           </div>
           <CardFooter
             currentEngine={currentEngine}
-            sourceLang={sourceLang}
-            targetLang={targetLang}
             onRefresh={onRefresh}
             searchText={searchText}
           />

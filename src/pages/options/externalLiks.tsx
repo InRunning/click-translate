@@ -50,9 +50,9 @@ export default function ExternalLinks() {
   function handleDragEnd(event: any) {
     const { active, over } = event;
     if (active.id !== over.id) {
-      const oldIndex = items.findIndex((item) => active.id === item.id);
-      const newIndex = items.findIndex((item) => over.id === item.id);
-      const newItems = arrayMove(items, oldIndex, newIndex);
+      const oldIndex = items.findIndex((item: ExternalLink) => active.id === item.id);
+      const newIndex = items.findIndex((item: ExternalLink) => over.id === item.id);
+      const newItems = arrayMove(items, oldIndex, newIndex) as ExternalLink[];
       setSetting({externalLinks: newItems})
     }
   }
@@ -67,12 +67,12 @@ export default function ExternalLinks() {
 
   };
   const onRemove = (submitItem: ExternalLink) => {
-    setSetting({externalLinks: items.filter((item) => item.id !== submitItem.id)})
+    setSetting({externalLinks: items.filter((item: ExternalLink) => item.id !== submitItem.id)})
 
   };
   const onSubmit = (submitItem: ExternalLink) => {
-    if (items.find((item) => submitItem.id === item.id)) {
-      setSetting({externalLinks:items.map((item) => {
+    if (items.find((item: ExternalLink) => submitItem.id === item.id)) {
+      setSetting({externalLinks:items.map((item: ExternalLink) => {
         if (item.id !== submitItem.id) {
           return item;
         } else {
@@ -132,7 +132,7 @@ export default function ExternalLinks() {
         onDragEnd={handleDragEnd}
       >
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          {items.map((item) => (
+          {items.map((item: ExternalLink) => (
             <Item
               key={item.id}
               item={item}

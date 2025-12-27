@@ -154,7 +154,7 @@ export function isWord({
   return iterator.next().value?.segment === text;
 }
 /** 针对不同 AI 引擎做消息兼容适配 */
-export const formateMessage = (engine: EngineValue, messages: Message[]) => {
+export const formateMessage = (_engine: EngineValue, messages: Message[]) => {
   return messages;
 };
 /**
@@ -288,14 +288,14 @@ export const parseCollins = (html: string) => {
   const cobuildItms = Array.from(
     doc.querySelectorAll(".definitions.cobuild .hom")
   );
-  (result.phonetic = doc.querySelector(".dictionary .pron")?.textContent),
+  (result.phonetic = doc.querySelector(".dictionary .pron")?.textContent ?? null),
     cobuildItms.forEach((item) => {
       result.explains.push({
-        pos: item.querySelector(".gramGrp")?.textContent,
-        def: item.querySelector(".def")?.textContent,
+        pos: item.querySelector(".gramGrp")?.textContent ?? undefined,
+        def: item.querySelector(".def")?.textContent ?? undefined,
         examples: Array.from(item.querySelectorAll(".type-example"))?.map(
-          (quote) => quote.textContent
-        ),
+          (quote) => quote.textContent ?? ""
+        ) ?? [],
       });
     });
   return result;

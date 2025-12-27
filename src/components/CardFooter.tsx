@@ -4,14 +4,10 @@ import ExternalLink from "./ExternalLink";
 import { isInPopup } from "@/utils";
 export default function CardFooter({
   currentEngine,
-  targetLang,
   onRefresh,
-  sourceLang,
   searchText,
 }: {
-  targetLang: string;
   currentEngine: string;
-  sourceLang: string;
   onRefresh: () => void;
   searchText: string;
 }) {

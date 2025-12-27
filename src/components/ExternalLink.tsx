@@ -1,12 +1,13 @@
 import { settingAtom } from "@/store";
 import { defaultSetting } from "@/utils/const";
 import { useAtom } from "jotai";
+import type { ExternalLink } from "@/types";
 export default function ExternalLink({ searchText }: { searchText: string }) {
   const [setting] = useAtom(settingAtom);
   const links = setting.externalLinks ?? defaultSetting.externalLinks;
   return (
     <div className="flex items-center gap-1 text-xs">
-      {links.map((item) => (
+      {links.map((item: ExternalLink) => (
         <a
           key={item.id}
           className="underline"

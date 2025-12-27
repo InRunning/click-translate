@@ -176,6 +176,20 @@ export const defaultSetting = {
   // 功能配置
   autoSaveWord: false, // 是否自动保存单词
 
+  // 外部链接配置
+  externalLinks: [
+    {
+      id: "google",
+      name: "Google",
+      link: "https://www.google.com/search?q={text}",
+    },
+    {
+      id: "bing",
+      name: "Bing",
+      link: "https://www.bing.com/search?q={text}",
+    },
+  ],
+
   // 已注释的配置选项（可能是历史遗留或实验性功能）
   // availableEngines: [
   //   {

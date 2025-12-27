@@ -3,7 +3,7 @@ import { clearLocal } from "@/storage/local";
 import { clearSession } from "@/storage/session";
 import browser from "webextension-polyfill";
 import { useTranslation } from "react-i18next";
-import {Github} from 'lucide-react'
+import { Github } from 'lucide-react'
 export default function Other() {
   const { t } = useTranslation();
   const reset = async () => {
@@ -57,7 +57,7 @@ export default function Other() {
         <a
           target="feedback"
           className="underline link flex items-center"
-          href="https://github.com/chengfengfengwang/lingo-link"
+          href="https://github.com/InRunning/click-translate"
         >
           <Github width={22} height={22} className="mr-1" /> 建议、反馈、贡献
         </a>

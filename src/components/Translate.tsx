@@ -35,7 +35,6 @@ export default function Translate({
   const { showBoundary } = useErrorBoundary();
   const sourceLang =
     setting.sourceLanguage?.language ?? defaultSetting.sourceLanguage.language;
-  const targetLang = setting.targetLanguage ?? defaultSetting.targetLanguage;
 
   // 已移除会话入口
   useEffect(() => {
@@ -103,8 +102,6 @@ export default function Translate({
         </div>
         <CardFooter
           currentEngine={currentEngine}
-          sourceLang={sourceLang}
-          targetLang={targetLang}
           onRefresh={onRefresh}
           searchText={searchText}
         />
