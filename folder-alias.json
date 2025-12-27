@@ -19,5 +19,8 @@
     },
     "manifest.config.ts": {
         "description": "插件配置文件"
+    },
+    "src/api": {
+        "description": "各个平台的api接口"
     }
 }

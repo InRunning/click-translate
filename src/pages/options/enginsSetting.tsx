@@ -150,35 +150,6 @@ export default function EnginesSetting() {
           </div>
         </div>
       )}
-      {availableEngines.findIndex((engine) => engine.value === "wenxin") !==
-        -1 && (
-        <div>
-          <div className="font-semibold text-[17px] mb-3">文心一言</div>
-          <div className="border rounded-xl p-9">
-            <div className="text-[15px] my-2">
-              <span>AccesToken</span>
-              <a
-                target="_blank"
-                className="ml-3 text-xs underline text-indigo-400"
-                href="https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Ilkkrb0i5"
-              >
-                {t("Method of acquisition")}
-              </a>
-            </div>
-            <input
-              onChange={(e) => {
-                setSetting({
-                  wenxinToken: e.target.value
-                })
-              }}
-              value={setting?.wenxinToken ?? ""}
-              type="text"
-              placeholder=""
-              className="input input-bordered w-full"
-            />
-          </div>
-        </div>
-      )}
       {availableEngines.findIndex((engine) => engine.value === "gemini") !==
         -1 && (
         <div>
@@ -201,35 +172,6 @@ export default function EnginesSetting() {
                 })
               }}
               value={setting?.geminiKey ?? ""}
-              type="text"
-              placeholder=""
-              className="input input-bordered w-full"
-            />
-          </div>
-        </div>
-      )}
-      {availableEngines.findIndex((engine) => engine.value === "moonshot") !==
-        -1 && (
-        <div>
-          <div className="font-semibold text-[17px] mb-3">MoonShot</div>
-          <div className="border rounded-xl p-9">
-            <div className="text-[15px] my-2">
-              <span>apiKey</span>
-              <a
-                target="_blank"
-                className="ml-3 text-xs underline text-indigo-400"
-                href="https://platform.moonshot.cn/docs/api-reference"
-              >
-                {t("Method of acquisition")}
-              </a>
-            </div>
-            <input
-              onChange={(e) => {
-                setSetting({
-                  moonShotKey: e.target.value
-                })
-              }}
-              value={setting?.moonShotKey ?? ""}
               type="text"
               placeholder=""
               className="input input-bordered w-full"

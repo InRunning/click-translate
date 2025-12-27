@@ -27,12 +27,6 @@ export default function CardFooter({
       <div className="flex items-center  text-xs text-gray-400 mt-2 space-x-4">
         <div className="flex items-center">
           <span>translated by {currentEngine}</span>
-          {currentEngine === "youdao" && (
-            <span className="ml-1 text-gray-500">
-              {" "}
-              {sourceLang} to {targetLang}
-            </span>
-          )}
           <span
             onClick={onRefresh}
             data-tip={t("Refresh")}

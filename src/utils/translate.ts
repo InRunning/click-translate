@@ -4,7 +4,6 @@ import { getSetting } from "@/storage/sync";
 import { defaultSetting } from "./const";
 import { formateText } from ".";
 import { EngineValue } from "@/types";
-import youdaoTranslate from "@/api/youdaoTranslate";
 import { getChat } from "@/api/chat";
 import type { ChatConstructor } from "@/api/openAI";
 import type { Message } from "@/types/chat";
@@ -84,16 +83,6 @@ export default async function ({
             targetLang,
           });
           onSuccess(googleResult);
-        }
-        break;
-      case "youdao":
-        {
-          const youdaoResult = await youdaoTranslate({
-            text,
-            source: sourceLang,
-            target: targetLang,
-          });
-          onSuccess(youdaoResult);
         }
         break;
       default:

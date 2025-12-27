@@ -98,6 +98,14 @@ export const defaultSetting = {
   openAIAddress: "https://api.openai.com/v1/chat/completions",
   openAIModel: "gpt-4o",
 
+  // DeepSeek相关配置
+  deepSeekApiKey: "",
+  deepSeekAddress: "https://api.deepseek.com/chat/completions",
+
+  // Gemini相关配置
+  geminiKey: "",
+  geminiAddress: "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent",
+
   // 自定义 AI（Custom AI）相关配置
   // 在开发环境下预填为 ModelArts DeepSeek-V3 接口，方便本地调试
   customAIAddress: isDev
@@ -208,11 +216,6 @@ UK Phonetic: [UK Phonetic]`,
       name: "朗文",
       link: "https://www.ldoceonline.com/dictionary/{text}",
     },
-    {
-      id: "3",
-      name: "柯林斯",
-      link: "https://www.collinsdictionary.com/zh/dictionary/english/{text}",
-    },
   ],
 
   /**
@@ -224,20 +227,6 @@ UK Phonetic: [UK Phonetic]`,
    */
   engineList: (() => {
     const base = [
-      {
-        name: "Youdao",
-        value: "youdao",
-        isChat: false,
-        checked: true,
-        compatible: "both",
-      },
-      {
-        name: "Collins",
-        value: "collins",
-        isChat: false,
-        checked: true,
-        compatible: "word",
-      },
       {
         name: "Google",
         value: "google",
@@ -260,22 +249,8 @@ UK Phonetic: [UK Phonetic]`,
         compatible: "both",
       },
       {
-        name: "文心一言",
-        value: "wenxin",
-        isChat: true,
-        checked: false,
-        compatible: "both",
-      },
-      {
         name: "DeepSeek",
         value: "deepseek",
-        isChat: true,
-        checked: false,
-        compatible: "both",
-      },
-      {
-        name: "moonshot",
-        value: "moonshot",
         isChat: true,
         checked: false,
         compatible: "both",
@@ -494,18 +469,12 @@ export const extensionId = "ahhlnchdiglcghegemaclpikmdclonmo";
  * 用于在UI中显示对应的引擎图标
  */
 export const enginePicArr = {
-  youdao:
-    "https://qph.cf2.poecdn.net/main-thumb-pb-1091482-200-ufgqhqgohdggdfzitfacamfxuamtfbye.jpeg",
   google:
     "https://qph.cf2.poecdn.net/main-thumb-pb-3655359-200-eomiajapmpmpgnwktjnxhcfbdlueukgq.jpeg",
   openai:
     "https://qph.cf2.poecdn.net/main-thumb-pb-3004-200-jougqzjtwfqfyqprxbdwofvnwattmtrg.jpeg",
   gemini:
     "https://qph.cf2.poecdn.net/main-thumb-pb-3669463-200-hqyxuiygtmnetolnimubmwhakbsueapd.jpeg",
-  wenxin:
-    "https://qph.cf2.poecdn.net/main-thumb-pb-3669463-200-hqyxuiygtmnetolnimubmwhakbsueapd.jpeg",
-  moonshot:
-    "https://qph.cf2.poecdn.net/main-thumb-pb-1160656-200-rzstcnvivfmlwjkijfkbhhpclcrjhopa.jpeg",
 };
 
 /**

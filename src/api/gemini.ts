@@ -2,6 +2,7 @@ import type { Chat, Message } from "@/types/chat";
 import { ChatConstructor } from "./openAI";
 import { getSetting } from "@/storage/sync";
 import { toastManager } from "@/components/Toast";
+import { defaultSetting } from "@/utils/const";
 
 function tryParse(currentText: string): {
   remainingText: string;
@@ -66,7 +67,8 @@ export default class GeminiClass implements Chat {
     if (this.controller.signal.aborted) {
       this.controller = new AbortController();
     }
-    const key = (await getSetting()).geminiKey;
+    const setting = await getSetting();
+    const key = setting.geminiKey;
     if (!key) {
       toastManager.add({
         type: 'error',
@@ -74,7 +76,8 @@ export default class GeminiClass implements Chat {
       })
       return
     }
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent?key=${key}`;
+    const baseUrl = setting.geminiAddress ?? defaultSetting.geminiAddress;
+    const url = `${baseUrl}?key=${key}`;
     // const apiKey = setting.openAIKey
     // if (!apiKey) {
     //   this.onError && this.onError('apiKey is empty')

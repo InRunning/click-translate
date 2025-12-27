@@ -3,6 +3,7 @@ import { toastManager } from '@/components/Toast'
 import type { Chat, Message } from '@/types/chat'
 import { handleStream } from '@/utils'
 import { Setting } from '@/types'
+import { defaultSetting } from '@/utils/const'
 //import { addOpenAIRecords } from '@/utils/storage'
 export interface ChatConstructor {
   onError?: (err: string) => void
@@ -13,7 +14,7 @@ export interface ChatConstructor {
   preMessageList?: Message[]
 }
 export interface OpenAIConstructor extends ChatConstructor{
-  settingConfig?:Pick<Setting, 'deepSeekApiKey'>
+  settingConfig?:Pick<Setting, 'deepSeekApiKey'|'deepSeekAddress'>
 }
 
 export default class DeepSeekClass implements Chat {
@@ -24,7 +25,7 @@ export default class DeepSeekClass implements Chat {
   onGenerating?: (text: string) => void
   onComplete: (text: string) => void
   onClear?: () => void
-  settingConfig?:Pick<Setting, 'deepSeekApiKey'>
+  settingConfig?:Pick<Setting, 'deepSeekApiKey'|'deepSeekAddress'>
   constructor({
     onError,
     onGenerating,
@@ -50,7 +51,7 @@ export default class DeepSeekClass implements Chat {
         this.controller = new AbortController()
       }
       const setting = await getSetting()
-      const url =  'https://api.deepseek.com/chat/completions';
+      const url = this.settingConfig?.deepSeekAddress ?? setting.deepSeekAddress ?? defaultSetting.deepSeekAddress
       const model = 'deepseek-chat'
       const apiKey = this.settingConfig?.deepSeekApiKey ?? setting.deepSeekApiKey;
       if (!apiKey) {

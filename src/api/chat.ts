@@ -11,11 +11,8 @@
 import OpenAIClass from "@/api/openAI";
 import DeepSeekClass from "@/api/deepSeek";
 import GeminiClass from "@/api/gemini";
-import WenxinClass from "@/api/wenxin";
 // 导入引擎类型定义
 import type { EngineValue } from "@/types";
-// 导入月之暗面（月光宝盒）聊天引擎
-import MoonShotClass from "./moonShot";
 // 导入自定义AI聊天引擎
 import CustomAIClass from "./customAI";
 
@@ -30,10 +27,6 @@ export const getChat = (engine:EngineValue) => {
       return  OpenAIClass
     case "gemini":      // Google Gemini
       return  GeminiClass
-    case "wenxin":      // 百度文心一言
-      return  WenxinClass
-    case "moonshot":    // 月之暗面（月光宝盒）
-      return  MoonShotClass
     case "deepseek":    // DeepSeek AI
       return  DeepSeekClass
     case "custom":      // 自定义AI服务

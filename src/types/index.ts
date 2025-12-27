@@ -70,13 +70,6 @@ export interface ExternalLink {
   link: string;
 }
 export type InterfaceLanguage = "en" | "zh";
-export type OuluInfo = {
-  token?: string;
-  bookList?: { name: string; id: string; lang: string }[];
-  targetBookId?: string;
-  targetBookLang?: string;
-  open?: boolean;
-};
 export interface Setting {
   userInfo?: User | null;
   openAIKey?: string;
@@ -85,7 +78,6 @@ export interface Setting {
   showSelectionIcon?: boolean;
   engine?: EngineValue;
   geminiKey?: string;
-  moonShotKey?: string;
   targetLanguage?: LangCode;
   sourceLanguage?: Language;
   interfaceLanguage?: InterfaceLanguage;
@@ -94,7 +86,6 @@ export interface Setting {
   triggerIconSize?: number;
   highlightColor?: string;
   highlightStyle?: HighlightName;
-  wenxinToken?: string;
   availableEngines?: EngineItem[]; // old
   wordEngineList?: EngineItem[];
   sentenceEngineList?: EngineItem[];
@@ -103,9 +94,10 @@ export interface Setting {
   sentenceSystemPrompt?: string;
   sentenceUserContent?: string;
   externalLinks?: ExternalLink[];
-  ouluInfo?: OuluInfo;
   screenshotToken?: string;
   deepSeekApiKey?:string;
+  deepSeekAddress?:string;
+  geminiAddress?:string;
   deepLXAddress?:string;
   customAIAddress?:string;
   customAIModel?:string;
@@ -175,14 +167,6 @@ export type PostMessage =
       name: "fillCollectForm";
       payload: Partial<Pick<Sww, "id" | "context" | "word" | "remark">>;
     }
-export type CollinsWord = {
-  phonetic: string | null | undefined;
-  explains: {
-    pos: string | null | undefined;
-    def: string | undefined | null;
-    examples: (string | undefined | null)[];
-  }[];
-};
 export interface CollectBasicInfo {
   word: string;
   context: string;

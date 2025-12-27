@@ -153,14 +153,8 @@ export function isWord({
   const iterator = segmenter.segment(text)[Symbol.iterator]();
   return iterator.next().value?.segment === text;
 }
-/** 针对不同 AI 引擎做消息兼容适配（如文心角色映射） */
+/** 针对不同 AI 引擎做消息兼容适配 */
 export const formateMessage = (engine: EngineValue, messages: Message[]) => {
-  if (engine === "wenxin") {
-    return messages.map((item) => ({
-      role: item.role === "system" ? "user" : item.role,
-      content: item.content,
-    }));
-  }
   return messages;
 };
 /**
