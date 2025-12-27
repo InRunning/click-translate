@@ -170,9 +170,7 @@ export const defaultSetting = {
   wordSystemPrompt: `我正在学习英语，接下来我会提供给你一个句子和这个句子中的一个单词，请以牛津英汉词典的格式解释句子中的这个单词的含义，输出格式：
 释义: 单词在句子中的释义，要精简
 美式音标: [美式音标]
-英式音标: [英式音标]
-例句: 英文例句
-翻译: 例句的中文翻译`,
+英式音标: [英式音标]`,
 
   // 已注释的用户内容模板
   //wordUserContent: `单词是：{ word } `,
@@ -181,7 +179,7 @@ export const defaultSetting = {
    * 单词翻译的用户内容模板
    * 包含需要翻译的单词和上下文句子
    */
-  wordUserContent:'单词是：{word}，句子是{sentence}',
+  wordUserContent: '单词是：{word}，句子是{sentence}',
 
   /**
    * 句子翻译的系统提示词
