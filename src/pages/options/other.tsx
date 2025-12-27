@@ -59,7 +59,7 @@ export default function Other() {
           className="underline link flex items-center"
           href="https://github.com/InRunning/click-translate"
         >
-          <Github width={22} height={22} className="mr-1" /> 建议、反馈、贡献
+          <Github width={22} height={22} className="mr-1" /> {t("GitHubLink")}
         </a>
       </div>
     </div>

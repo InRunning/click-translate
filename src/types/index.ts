@@ -64,11 +64,6 @@ export interface User {
   emailCode?: number;
   emailTime?: number;
 }
-export interface ExternalLink {
-  id: string;
-  name: string;
-  link: string;
-}
 
 export interface CollinsWord {
   phonetic: string | null;

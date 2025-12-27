@@ -32,12 +32,6 @@ export default function App() {
       active: false,
       component: <EnginesSetting />,
     },
-    {
-      name: "External Links",
-      path: "/externalLinks",
-      active: false,
-      component: <ExternalLinks />,
-    },
     // 已移除：词汇本与同步功能
     {
       name: "Other",

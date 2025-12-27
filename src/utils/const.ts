@@ -176,20 +176,6 @@ export const defaultSetting = {
   // 功能配置
   autoSaveWord: false, // 是否自动保存单词
 
-  // 外部链接配置
-  externalLinks: [
-    {
-      id: "google",
-      name: "Google",
-      link: "https://www.google.com/search?q={text}",
-    },
-    {
-      id: "bing",
-      name: "Bing",
-      link: "https://www.bing.com/search?q={text}",
-    },
-  ],
-
   // 已注释的配置选项（可能是历史遗留或实验性功能）
   // availableEngines: [
   //   {
@@ -251,7 +237,7 @@ UK Phonetic: [UK Phonetic]`,
    * 句子翻译的用户内容模板
    * 指定翻译目标和要翻译的句子
    */
-  sentenceUserContent: `Translate the following text to { targetLanguage }: { sentence } `,
+  sentenceUserContent: getSentenceUserContent(),
 
   /**
    * 翻译引擎列表配置
