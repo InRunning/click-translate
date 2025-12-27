@@ -96,7 +96,7 @@ export default function WordChat({
       onBeforeRequest: () => {
         setLoading(true);
       },
-      onComplete: (_text: string) => {
+      onComplete: () => {
         setGenerating(false);
         setLoading(false);
       },

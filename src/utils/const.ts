@@ -167,10 +167,10 @@ export const defaultSetting = {
    * 单词翻译的系统提示词
    * 用于指导AI如何解释单词含义，遵循牛津英汉词典格式
    */
-  wordSystemPrompt: `我正在学习英语，接下来我会提供给你一个句子和这个句子中的一个单词，请以牛津英汉词典的格式解释句子中的这个单词的含义，输出格式：
-释义: 单词在句子中的释义，要精简
-美式音标: [美式音标]
-英式音标: [英式音标]`,
+  wordSystemPrompt: `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
+Definition: The definition of the word in the sentence, keep it concise
+US Phonetic: [US Phonetic]
+UK Phonetic: [UK Phonetic]`,
 
   // 已注释的用户内容模板
   //wordUserContent: `单词是：{ word } `,

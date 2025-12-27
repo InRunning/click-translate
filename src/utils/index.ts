@@ -79,7 +79,7 @@ export const hasWord = ({
  */
 export const backgroundFetch = async (param: BackgroundFetchParam) => {
   const { url, method, responseType } = param;
-  const options: Record<string, any> = {
+  const options: Record<string, unknown> = {
     method: method ?? "GET",
   };
   if (param.body) {

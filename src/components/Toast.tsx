@@ -60,12 +60,10 @@ export const toastManager: ToastManager = {
     toastManager.add = param.add;
     toastManager.remove = param.remove;
   },
-  // @ts-ignore
-  add: (config) => {
+  add: () => {
     throw new Error("not init");
   },
-  // @ts-ignore
-  remove: (id) => {
+  remove: () => {
     throw new Error("not init");
   },
 };

@@ -5,7 +5,7 @@ import { toastManager } from "@/components/Toast";
 
 function tryParse(currentText: string): {
   remainingText: string;
-  parsedResponse: any;
+  parsedResponse: unknown;
 } {
   let jsonText: string;
   if (currentText.startsWith("[")) {
@@ -133,7 +133,7 @@ export default class GeminiClass implements Chat {
 
         if (parsedResponse) {
           currentText = remainingText;
-          for (const item of parsedResponse) {
+          for (const item of parsedResponse as Array<{ candidates: Array<{ content: { parts: Array<{ text: string }> } }> }>) {
             const text = item.candidates[0].content.parts[0].text;
             result += text;
             this.messageList = this.messageList.map((message, index) => {
@@ -154,6 +154,7 @@ export default class GeminiClass implements Chat {
         }
       };
 
+      // eslint-disable-next-line no-constant-condition
       while (true) {
         const { done, value } = await reader.read();
         if (done) {

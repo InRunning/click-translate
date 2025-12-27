@@ -8,7 +8,7 @@ export interface WordExplain {
     category: string | undefined
     phonetic: string | undefined
     star: number
-    rank: any
+    rank: string | undefined
     pattern: string | undefined
     explanations: {
       explanation: string

@@ -117,6 +117,6 @@ export default class MoonShotClass implements Chat {
   }
   abort(){
     this.controller.abort('card is hidden')
-  };
+  }
 }
 
