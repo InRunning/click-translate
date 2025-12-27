@@ -69,7 +69,7 @@ export interface ExternalLink {
   name: string;
   link: string;
 }
-export type InterfaceLanguage = "en" | "zh";
+export type InterfaceLanguage = "en" | "zh" | "ja" | "ko" | "fr" | "de" | "es" | "it" | "ru" | "pt" | "th" | "vi" | "hi" | "ar" | "tr" | "id" | "nl" | "pl" | "sv" | "uk";
 export interface Setting {
   userInfo?: User | null;
   openAIKey?: string;

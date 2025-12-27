@@ -1,5 +1,5 @@
 import { EngineItem } from "@/types";
-import { defaultSetting, allWordEngineList } from "@/utils/const";
+import { defaultSetting, allWordEngineList, getWordSystemPrompt, getWordUserContent } from "@/utils/const";
 import { useTranslation } from "react-i18next";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
@@ -114,7 +114,7 @@ export default function WordEngine() {
               </div>
               <InfoAndReset
                 tip={t("Prompt Of Word System Tip")}
-                onReset={() => setSetting({wordSystemPrompt: defaultSetting.wordSystemPrompt})
+                onReset={() => setSetting({wordSystemPrompt: getWordSystemPrompt()})
                 }
               />
             </div>
@@ -131,7 +131,7 @@ export default function WordEngine() {
                 tip={t("Prompt Of Word User Tip")}
                 onReset={() =>
                   setSetting({
-                    wordUserContent: defaultSetting.wordUserContent
+                    wordUserContent: getWordUserContent()
                   })
                 }
               />

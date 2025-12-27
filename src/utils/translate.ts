@@ -1,7 +1,7 @@
 import googleTranslate from "@/api/google";
 import deepLXTranslate from "@/api/deeplx";
 import { getSetting } from "@/storage/sync";
-import { defaultSetting } from "./const";
+import { defaultSetting, getSentenceSystemPrompt, getSentenceUserContent } from "./const";
 import { formateText } from ".";
 import { EngineValue } from "@/types";
 import { getChat } from "@/api/chat";
@@ -92,9 +92,9 @@ export default async function ({
             throw "engine doesn't exist";
           }
           const sentenceSystemPrompt =
-            setting.sentenceSystemPrompt ?? defaultSetting.sentenceSystemPrompt;
+            setting.sentenceSystemPrompt ?? getSentenceSystemPrompt();
           const sentenceUserContent =
-            setting.sentenceUserContent ?? defaultSetting.sentenceUserContent;
+            setting.sentenceUserContent ?? getSentenceUserContent();
           let chatInstance: Chat | null = null;
 
           const chatOptions: ChatConstructor = {

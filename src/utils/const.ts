@@ -1,4 +1,4 @@
-import { Language } from "@/types";
+import { Language, InterfaceLanguage } from "@/types";
 //import { codeBlock, oneLineTrim } from "common-tags";
 
 /**
@@ -129,7 +129,45 @@ export const defaultSetting = {
 
   // 界面显示配置
   showSelectionIcon: true, // 是否显示选中文字的触发图标
-  interfaceLanguage: navigator.language === "en" ? "en" : "zh", // 界面语言
+  interfaceLanguage: (() => {
+    const lang = navigator.language.toLowerCase();
+    // 支持的语言映射
+    const languageMap: Record<string, InterfaceLanguage> = {
+      'en': 'en',
+      'ja': 'ja',
+      'ko': 'ko',
+      'fr': 'fr',
+      'de': 'de',
+      'es': 'es',
+      'it': 'it',
+      'ru': 'ru',
+      'pt': 'pt',
+      'th': 'th',
+      'vi': 'vi',
+      'hi': 'hi',
+      'ar': 'ar',
+      'tr': 'tr',
+      'id': 'id',
+      'nl': 'nl',
+      'pl': 'pl',
+      'sv': 'sv',
+      'uk': 'uk',
+      'zh': 'zh', // 中文
+      'zh-cn': 'zh', // 简体中文
+      'zh-tw': 'zh', // 繁体中文
+    };
+    // 尝试精确匹配
+    if (languageMap[lang]) {
+      return languageMap[lang];
+    }
+    // 尝试主语言匹配（如 en-US -> en）
+    const mainLang = lang.split('-')[0];
+    if (languageMap[mainLang]) {
+      return languageMap[mainLang];
+    }
+    // 默认返回英文
+    return 'en';
+  })(), // 界面语言
   autoPronounce: false, // 是否自动发音
   triggerIconSize: 25, // 触发图标的尺寸（像素）
   highlightColor: "black", // 高亮显示颜色
@@ -490,3 +528,58 @@ export const highlightStyles = [
  * 基于highlightStyles数组提取的联合类型
  */
 export type HighlightName = (typeof highlightStyles)[number]
+
+/**
+ * 动态获取单词翻译系统提示词
+ * 根据当前界面语言返回对应的提示词
+ */
+export const getWordSystemPrompt = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Word System Prompt');
+  } catch {
+    return `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
+Definition: The definition of the word in the sentence, keep it concise
+US Phonetic: [US Phonetic]
+UK Phonetic: [UK Phonetic]`;
+  }
+};
+
+/**
+ * 动态获取单词翻译用户内容模板
+ * 根据当前界面语言返回对应的模板
+ */
+export const getWordUserContent = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Word User Content');
+  } catch {
+    return '单词是：{word}，句子是{sentence}';
+  }
+};
+
+/**
+ * 动态获取句子翻译系统提示词
+ * 根据当前界面语言返回对应的提示词
+ */
+export const getSentenceSystemPrompt = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Sentence System Prompt');
+  } catch {
+    return `You are a translation AI. You only need to provide the translation result without adding any irrelevant content.`;
+  }
+};
+
+/**
+ * 动态获取句子翻译用户内容模板
+ * 根据当前界面语言返回对应的模板
+ */
+export const getSentenceUserContent = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Sentence User Content');
+  } catch {
+    return `Translate the following text to { targetLanguage }: { sentence } `;
+  }
+};

@@ -1,7 +1,7 @@
 import YoudaoSpeaker from "./Speaker";
 import Highlight from "./Highlight";
 import { useTranslation } from "react-i18next";
-import { defaultSetting } from "@/utils/const";
+import { defaultSetting, getWordSystemPrompt, getWordUserContent } from "@/utils/const";
 import CardFooter from "./CardFooter";
 import { EngineValue } from "@/types";
 import ContentMore from "./ContentMore";
@@ -24,9 +24,9 @@ export default function RenderWord({
   const sourceLang =
     setting.sourceLanguage?.language ?? defaultSetting.sourceLanguage.language;
   const wordSystemPrompt =
-    setting.wordSystemPrompt ?? defaultSetting.wordSystemPrompt;
+    setting.wordSystemPrompt ?? getWordSystemPrompt();
   const wordUserContent =
-    setting.wordUserContent ?? defaultSetting.wordUserContent;
+    setting.wordUserContent ?? getWordUserContent();
   const targetLang = setting.targetLanguage ?? defaultSetting.targetLanguage;
   
   // 已移除会话入口
