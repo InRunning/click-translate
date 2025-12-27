@@ -1,0 +1,18 @@
+[project]
+name = "click-translate-relay"
+version = "0.1.0"
+description = "Click Translate Relay Service - OpenAI Chat Completions Proxy"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "requests>=2.31.0",
+    "pyyaml>=6.0.0",
+    "gunicorn>=21.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.4.0",
+    "httpx>=0.25.0",
+]
