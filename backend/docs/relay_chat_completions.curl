@@ -1,0 +1,16 @@
+# 测试翻译请求 - 使用 Chat Completions 接口
+curl -X POST http://localhost:12032/api/v1/relay/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a professional translation assistant. Translate the given text accurately."
+      },
+      {
+        "role": "user",
+        "content": "请把这句话翻译成英文：你好世界"
+      }
+    ],
+    "stream": false
+  }'
