@@ -11,6 +11,7 @@
 import OpenAIClass from "@/api/openAI";
 import DeepSeekClass from "@/api/deepSeek";
 import GeminiClass from "@/api/gemini";
+import ClickTranslateClass from "./click_translate";
 // 导入引擎类型定义
 import type { EngineValue } from "@/types";
 // 导入自定义AI聊天引擎
@@ -23,6 +24,8 @@ import CustomAIClass from "./customAI";
  */
 export const getChat = (engine:EngineValue) => {
   switch (engine) {
+    case 'click-translate':  // Click-Translate 官方翻译
+      return ClickTranslateClass
     case 'openai':      // OpenAI GPT系列
       return  OpenAIClass
     case "gemini":      // Google Gemini

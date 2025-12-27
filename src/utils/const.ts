@@ -240,23 +240,6 @@ UK Phonetic: [UK Phonetic]`,
   sentenceUserContent: `Translate the following text to { targetLanguage }: { sentence } `,
 
   /**
-   * 外部链接配置
-   * 提供跳转到其他翻译或词典网站的快捷方式
-   */
-  externalLinks: [
-    {
-      id: "1",
-      name: "百度翻译",
-      link: "https://fanyi.baidu.com/#en/zh/{text}",
-    },
-    {
-      id: "2",
-      name: "朗文",
-      link: "https://www.ldoceonline.com/dictionary/{text}",
-    },
-  ],
-
-  /**
    * 翻译引擎列表配置
    * 定义所有可用的翻译服务和其属性
    * isChat: 是否为聊天式AI引擎
@@ -265,6 +248,13 @@ UK Phonetic: [UK Phonetic]`,
    */
   engineList: (() => {
     const base = [
+      {
+        name: "Click-Translate",
+        value: "click-translate",
+        isChat: true,
+        checked: true,
+        compatible: "both",
+      },
       {
         name: "OpenAI",
         value: "openai",
