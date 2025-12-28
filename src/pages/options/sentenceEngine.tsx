@@ -1,5 +1,5 @@
 import { EngineItem } from "@/types";
-import { defaultSetting, allSentenceEngineList } from "@/utils/const";
+import { allSentenceEngineList } from "@/utils/const";
 import { useTranslation } from "react-i18next";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
@@ -116,17 +116,20 @@ export default function SentenceEngine() {
                 tip={t("Prompt Of Sentence System Tip")}
                 onReset={() =>
                   setSetting({
-                    sentenceSystemPrompt: t('Sentence System Prompt')
+                    sentenceSystemPrompt: t("Sentence System Prompt"),
                   })
                 }
               />
             </div>
 
             <textarea
-              onChange={(e) => setSetting({
-                sentenceSystemPrompt: e.target.value
-              })}
-              value={setting.sentenceSystemPrompt ?? defaultSetting.sentenceSystemPrompt}
+              onChange={(e) =>
+                setSetting({
+                  sentenceSystemPrompt: e.target.value,
+                })
+              }
+              // 默认值改为使用当前界面语言下的 i18n 文案
+              value={setting.sentenceSystemPrompt ?? t("Sentence System Prompt")}
               className="w-full h-[100px]  textarea textarea-bordered"
               placeholder="System Prompt"
             ></textarea>
@@ -136,16 +139,20 @@ export default function SentenceEngine() {
                 tip={t("Prompt Of Sentence User Tip")}
                 onReset={() =>
                   setSetting({
-                    sentenceUserContent: t('Sentence User Content')
+                    sentenceUserContent: t("Sentence User Content"),
                   })
                 }
               />
             </div>
             <textarea
-              onChange={(e) => setSetting({
-                sentenceUserContent: e.target.value
-              })}
-              value={setting.sentenceUserContent ?? defaultSetting.sentenceUserContent}
+              onChange={(e) =>
+                setSetting({
+                  sentenceUserContent: e.target.value,
+                })
+              }
+              value={
+                setting.sentenceUserContent ?? t("Sentence User Content")
+              }
               className="w-full h-[50px]  textarea textarea-bordered"
               placeholder="User Content"
             ></textarea>

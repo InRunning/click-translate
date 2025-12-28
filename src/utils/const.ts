@@ -93,10 +93,11 @@ export const supportLanguages: Language[] = [
  * 动态获取单词翻译系统提示词
  * 根据当前界面语言返回对应的提示词
  */
-export const getWordSystemPrompt = (): string => {
+export const getWordSystemPrompt = async (): Promise<string> => {
   try {
     // 动态导入 i18n 实例，避免循环依赖
-    const i18nInstance = require('@/i18n').default;
+    const i18nModule = await import('@/i18n');
+    const i18nInstance = i18nModule.default;
     return i18nInstance.t('Word System Prompt');
   } catch {
     return `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
@@ -110,10 +111,11 @@ UK Phonetic: [UK Phonetic]`;
  * 动态获取单词翻译用户内容模板
  * 根据当前界面语言返回对应的模板
  */
-export const getWordUserContent = (): string => {
+export const getWordUserContent = async (): Promise<string> => {
   try {
     // 动态导入 i18n 实例，避免循环依赖
-    const i18nInstance = require('@/i18n').default;
+    const i18nModule = await import('@/i18n');
+    const i18nInstance = i18nModule.default;
     return i18nInstance.t('Word User Content');
   } catch {
     return '单词是：{word}，句子是{sentence}';
@@ -124,10 +126,11 @@ export const getWordUserContent = (): string => {
  * 动态获取句子翻译系统提示词
  * 根据当前界面语言返回对应的提示词
  */
-export const getSentenceSystemPrompt = (): string => {
+export const getSentenceSystemPrompt = async (): Promise<string> => {
   try {
     // 动态导入 i18n 实例，避免循环依赖
-    const i18nInstance = require('@/i18n').default;
+    const i18nModule = await import('@/i18n');
+    const i18nInstance = i18nModule.default;
     return i18nInstance.t('Sentence System Prompt');
   } catch {
     return `You are a translation AI. You only need to provide the translation result without adding any irrelevant content.`;
@@ -138,10 +141,11 @@ export const getSentenceSystemPrompt = (): string => {
  * 动态获取句子翻译用户内容模板
  * 根据当前界面语言返回对应的模板
  */
-export const getSentenceUserContent = (): string => {
+export const getSentenceUserContent = async (): Promise<string> => {
   try {
     // 动态导入 i18n 实例，避免循环依赖
-    const i18nInstance = require('@/i18n').default;
+    const i18nModule = await import('@/i18n');
+    const i18nInstance = i18nModule.default;
     return i18nInstance.t('Sentence User Content');
   } catch {
     return `Translate the following text to { targetLanguage }: { sentence } `;
@@ -294,7 +298,7 @@ UK Phonetic: [UK Phonetic]`,
    * 句子翻译的用户内容模板
    * 指定翻译目标和要翻译的句子
    */
-  sentenceUserContent: getSentenceUserContent(),
+  sentenceUserContent: `Translate the following text to { targetLanguage }: { sentence } `,
 
   /**
    * 翻译引擎列表配置

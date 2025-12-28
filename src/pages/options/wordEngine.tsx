@@ -114,13 +114,22 @@ export default function WordEngine() {
               </div>
               <InfoAndReset
                 tip={t("Prompt Of Word System Tip")}
-                onReset={() => setSetting({wordSystemPrompt: t('Word System Prompt')})}
+                onReset={() =>
+                  setSetting({
+                    wordSystemPrompt: t("Word System Prompt"),
+                  })
+                }
               />
             </div>
 
             <textarea
-              onChange={(e) =>setSetting({wordSystemPrompt: e.target.value})}
-              value={setting.wordSystemPrompt ?? defaultSetting.wordSystemPrompt}
+              onChange={(e) =>
+                setSetting({
+                  wordSystemPrompt: e.target.value,
+                })
+              }
+              // 默认值改为使用当前界面语言下的 i18n 文案
+              value={setting.wordSystemPrompt ?? t("Word System Prompt")}
               className="w-full h-[100px]  textarea textarea-bordered"
               placeholder="System Prompt"
             ></textarea>
