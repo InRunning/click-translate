@@ -57,7 +57,6 @@ export default function RenderWord({
           <CardFooter
             currentEngine={currentEngine}
             onRefresh={onRefresh}
-            searchText={searchText}
           />
         </div>
       );

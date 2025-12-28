@@ -97,7 +97,6 @@ export interface Setting {
   wordUserContent?: string;
   sentenceSystemPrompt?: string;
   sentenceUserContent?: string;
-  externalLinks?: ExternalLink[];
   screenshotToken?: string;
   deepSeekApiKey?:string;
   deepSeekAddress?:string;

@@ -1,23 +1,13 @@
 import { RotateCcw } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import ExternalLink from "./ExternalLink";
-import { isInPopup } from "@/utils";
 export default function CardFooter({
   currentEngine,
   onRefresh,
-  searchText,
 }: {
   currentEngine: string;
   onRefresh: () => void;
-  searchText: string;
 }) {
   const { t } = useTranslation();
-  const ExternalCom = (
-    <div className="flex items-center space-x-1 text-xs text-gray-400">
-      <span>{t("External Links")}:</span>
-      <ExternalLink searchText={searchText} />
-    </div>
-  );
   return (
     <>
       <div className="flex items-center  text-xs text-gray-400 mt-2 space-x-4">
@@ -31,12 +21,7 @@ export default function CardFooter({
             <RotateCcw className={`w-[14px] h-[14px] fill-none`} />
           </span>
         </div>
-        {!isInPopup && ExternalCom}
       </div>
-      {isInPopup && <div className="mt-1">{
-        ExternalCom
-      }
-      </div>}
     </>
   );
 }

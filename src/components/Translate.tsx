@@ -103,7 +103,6 @@ export default function Translate({
         <CardFooter
           currentEngine={currentEngine}
           onRefresh={onRefresh}
-          searchText={searchText}
         />
       </div>
     );

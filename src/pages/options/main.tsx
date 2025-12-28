@@ -5,7 +5,6 @@ import { ToastContainer } from "@/components/Toast";
 import Options from "./options";
 import "@/i18n.ts";
 import EnginesSetting from "./enginsSetting";
-import ExternalLinks from "./externalLiks";
 // import ScreenshotSetting from "./screenshotSetting";
 import Other from "./other";
 import Sidebar from "./sidebar";

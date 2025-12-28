@@ -88,6 +88,62 @@ export const supportLanguages: Language[] = [
     name: "French",
   },
 ];
+
+/**
+ * 动态获取单词翻译系统提示词
+ * 根据当前界面语言返回对应的提示词
+ */
+export const getWordSystemPrompt = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Word System Prompt');
+  } catch {
+    return `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
+Definition: The definition of the word in the sentence, keep it concise
+US Phonetic: [US Phonetic]
+UK Phonetic: [UK Phonetic]`;
+  }
+};
+
+/**
+ * 动态获取单词翻译用户内容模板
+ * 根据当前界面语言返回对应的模板
+ */
+export const getWordUserContent = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Word User Content');
+  } catch {
+    return '单词是：{word}，句子是{sentence}';
+  }
+};
+
+/**
+ * 动态获取句子翻译系统提示词
+ * 根据当前界面语言返回对应的提示词
+ */
+export const getSentenceSystemPrompt = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Sentence System Prompt');
+  } catch {
+    return `You are a translation AI. You only need to provide the translation result without adding any irrelevant content.`;
+  }
+};
+
+/**
+ * 动态获取句子翻译用户内容模板
+ * 根据当前界面语言返回对应的模板
+ */
+export const getSentenceUserContent = (): string => {
+  try {
+    const i18n = require('@/i18n').default;
+    return i18n.t('Sentence User Content');
+  } catch {
+    return `Translate the following text to { targetLanguage }: { sentence } `;
+  }
+};
+
 /**
  * 默认的插件设置配置
  * 包含翻译引擎、界面语言、触发方式等所有可配置选项
@@ -518,58 +574,3 @@ export const highlightStyles = [
  * 基于highlightStyles数组提取的联合类型
  */
 export type HighlightName = (typeof highlightStyles)[number]
-
-/**
- * 动态获取单词翻译系统提示词
- * 根据当前界面语言返回对应的提示词
- */
-export const getWordSystemPrompt = (): string => {
-  try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Word System Prompt');
-  } catch {
-    return `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
-Definition: The definition of the word in the sentence, keep it concise
-US Phonetic: [US Phonetic]
-UK Phonetic: [UK Phonetic]`;
-  }
-};
-
-/**
- * 动态获取单词翻译用户内容模板
- * 根据当前界面语言返回对应的模板
- */
-export const getWordUserContent = (): string => {
-  try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Word User Content');
-  } catch {
-    return '单词是：{word}，句子是{sentence}';
-  }
-};
-
-/**
- * 动态获取句子翻译系统提示词
- * 根据当前界面语言返回对应的提示词
- */
-export const getSentenceSystemPrompt = (): string => {
-  try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Sentence System Prompt');
-  } catch {
-    return `You are a translation AI. You only need to provide the translation result without adding any irrelevant content.`;
-  }
-};
-
-/**
- * 动态获取句子翻译用户内容模板
- * 根据当前界面语言返回对应的模板
- */
-export const getSentenceUserContent = (): string => {
-  try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Sentence User Content');
-  } catch {
-    return `Translate the following text to { targetLanguage }: { sentence } `;
-  }
-};
