@@ -1,13 +1,14 @@
 import googleTranslate from "@/api/google";
 import deepLXTranslate from "@/api/deeplx";
 import { getSetting } from "@/storage/sync";
-import { defaultSetting, getSentenceSystemPrompt, getSentenceUserContent } from "./const";
+import { defaultSetting } from "./const";
 import { formateText } from ".";
 import { EngineValue } from "@/types";
 import { getChat } from "@/api/chat";
 import type { ChatConstructor } from "@/api/openAI";
 import type { Message } from "@/types/chat";
 import type { Chat } from "@/types/chat";
+import i18n from "@/i18n";
 
 const getPreMessages = ({
   text,
@@ -89,10 +90,11 @@ export default async function ({
           if (!chatClass) {
             throw "engine doesn't exist";
           }
+          // 直接使用 i18n 实例获取当前语言的提示词
           const sentenceSystemPrompt =
-            setting.sentenceSystemPrompt ?? getSentenceSystemPrompt();
+            setting.sentenceSystemPrompt ?? i18n.t('Sentence System Prompt');
           const sentenceUserContent =
-            setting.sentenceUserContent ?? getSentenceUserContent();
+            setting.sentenceUserContent ?? i18n.t('Sentence User Content');
           let chatInstance: Chat | null = null;
 
           const chatOptions: ChatConstructor = {

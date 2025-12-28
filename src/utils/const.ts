@@ -95,8 +95,9 @@ export const supportLanguages: Language[] = [
  */
 export const getWordSystemPrompt = (): string => {
   try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Word System Prompt');
+    // 动态导入 i18n 实例，避免循环依赖
+    const i18nInstance = require('@/i18n').default;
+    return i18nInstance.t('Word System Prompt');
   } catch {
     return `I am learning English. I will provide you with a sentence and a word from that sentence. Please explain the meaning of the word in the context of the sentence, following the format of the Oxford English-Chinese Dictionary. Output format:
 Definition: The definition of the word in the sentence, keep it concise
@@ -111,8 +112,9 @@ UK Phonetic: [UK Phonetic]`;
  */
 export const getWordUserContent = (): string => {
   try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Word User Content');
+    // 动态导入 i18n 实例，避免循环依赖
+    const i18nInstance = require('@/i18n').default;
+    return i18nInstance.t('Word User Content');
   } catch {
     return '单词是：{word}，句子是{sentence}';
   }
@@ -124,8 +126,9 @@ export const getWordUserContent = (): string => {
  */
 export const getSentenceSystemPrompt = (): string => {
   try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Sentence System Prompt');
+    // 动态导入 i18n 实例，避免循环依赖
+    const i18nInstance = require('@/i18n').default;
+    return i18nInstance.t('Sentence System Prompt');
   } catch {
     return `You are a translation AI. You only need to provide the translation result without adding any irrelevant content.`;
   }
@@ -137,8 +140,9 @@ export const getSentenceSystemPrompt = (): string => {
  */
 export const getSentenceUserContent = (): string => {
   try {
-    const i18n = require('@/i18n').default;
-    return i18n.t('Sentence User Content');
+    // 动态导入 i18n 实例，避免循环依赖
+    const i18nInstance = require('@/i18n').default;
+    return i18nInstance.t('Sentence User Content');
   } catch {
     return `Translate the following text to { targetLanguage }: { sentence } `;
   }
@@ -273,9 +277,6 @@ export const defaultSetting = {
 Definition: The definition of the word in the sentence, keep it concise
 US Phonetic: [US Phonetic]
 UK Phonetic: [UK Phonetic]`,
-
-  // 已注释的用户内容模板
-  //wordUserContent: `单词是：{ word } `,
 
   /**
    * 单词翻译的用户内容模板

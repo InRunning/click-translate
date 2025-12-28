@@ -1,6 +1,6 @@
 import YoudaoSpeaker from "./Speaker";
 import { useTranslation } from "react-i18next";
-import { defaultSetting, getWordSystemPrompt, getWordUserContent } from "@/utils/const";
+import { defaultSetting } from "@/utils/const";
 import CardFooter from "./CardFooter";
 import { EngineValue } from "@/types";
 import { useAtom } from "jotai";
@@ -21,10 +21,11 @@ export default function RenderWord({
   const wordAutoPlay = setting.autoPronounce ?? defaultSetting.autoPronounce;
   const sourceLang =
     setting.sourceLanguage?.language ?? defaultSetting.sourceLanguage.language;
+  // 直接使用 t() 函数获取当前语言的提示词
   const wordSystemPrompt =
-    setting.wordSystemPrompt ?? getWordSystemPrompt();
+    setting.wordSystemPrompt ?? t('Word System Prompt');
   const wordUserContent =
-    setting.wordUserContent ?? getWordUserContent();
+    setting.wordUserContent ?? t('Word User Content');
   const targetLang = setting.targetLanguage ?? defaultSetting.targetLanguage;
   
   // 已移除会话入口

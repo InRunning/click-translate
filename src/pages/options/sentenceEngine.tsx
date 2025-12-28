@@ -1,5 +1,5 @@
 import { EngineItem } from "@/types";
-import { defaultSetting, allSentenceEngineList, getSentenceSystemPrompt, getSentenceUserContent } from "@/utils/const";
+import { defaultSetting, allSentenceEngineList } from "@/utils/const";
 import { useTranslation } from "react-i18next";
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
@@ -116,7 +116,7 @@ export default function SentenceEngine() {
                 tip={t("Prompt Of Sentence System Tip")}
                 onReset={() =>
                   setSetting({
-                    sentenceSystemPrompt: getSentenceSystemPrompt()
+                    sentenceSystemPrompt: t('Sentence System Prompt')
                   })
                 }
               />
@@ -136,7 +136,7 @@ export default function SentenceEngine() {
                 tip={t("Prompt Of Sentence User Tip")}
                 onReset={() =>
                   setSetting({
-                    sentenceUserContent: getSentenceUserContent()
+                    sentenceUserContent: t('Sentence User Content')
                   })
                 }
               />
