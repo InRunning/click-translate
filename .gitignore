@@ -68,3 +68,4 @@ venv.bak/
 .env.local
 .env.*.local
 click-translate.zip
+ref-docs/
