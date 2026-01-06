@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from controller.userController import router as user_router
+from utils.db import init_db
 
 
 def _get_cors_allow_origins() -> list[str]:
@@ -22,6 +23,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+def _startup() -> None:
+    init_db()
 
 
 @app.get("/api/v1/healthz")
